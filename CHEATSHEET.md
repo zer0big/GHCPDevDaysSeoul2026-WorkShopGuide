@@ -7,7 +7,7 @@
 | `copilot` | 터미널 | 대화형 세션 시작 (현재 폴더 기준) |
 | `copilot --resume` | 터미널 | 이전 세션 목록에서 골라 재개 |
 | `/login` | CLI | GitHub 로그인 |
-| `/exit` | CLI | 세션 종료 |
+| `/exit`, `/quit` (또는 `Ctrl+C` 두 번) | CLI | 세션 종료 |
 | `/help`, `/` | CLI | 도움말, 명령 목록 |
 
 ## 이번 실습에서 쓰는 슬래시 명령
