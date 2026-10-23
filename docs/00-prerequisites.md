@@ -5,7 +5,7 @@ Copilot CLI를 설치하고 로그인한 뒤, 빈 실습 폴더에서 첫 요청
 **이 레슨에서 할 일**
 
 - 필요한 계정과 도구를 확인합니다.
-- Copilot CLI를 설치하고 로그인합니다.
+- Copilot CLI를 설치하고, 이 키트를 받아 사전 점검을 실행합니다.
 - 실습 폴더를 만들고 신뢰하도록 설정합니다.
 - 세션에서 사용할 모델을 선택합니다.
 
@@ -26,24 +26,52 @@ Copilot CLI를 설치하고 로그인한 뒤, 빈 실습 폴더에서 첫 요청
 
 ---
 
-## 0-2. PowerShell 7 설치 (Windows)
+## 0-2. 터미널 준비 (Windows는 PowerShell 7)
+
+### Windows
 
 Copilot CLI는 Windows에서 **PowerShell 6 이상**이 필요합니다. 기본 탑재된 Windows PowerShell 5.1에서는 오류가 발생하므로 PowerShell 7을 사용합니다.
 
-```powershell
-PS> winget install --id Microsoft.PowerShell --source winget
-```
+> **관리자 권한으로 실행하지 않습니다.** 관리자 터미널은 시작 위치가 `C:\Windows\System32`이므로, 실습 파일이 시스템 폴더에 생길 수 있습니다.
 
-설치 후 **새 터미널**을 열고 PowerShell 7로 전환해 버전을 확인합니다.
+1. 시작 메뉴에서 **Windows PowerShell**을 엽니다.
+2. winget이 있는지 확인합니다.
 
-```powershell
-PS> pwsh
-PS> $PSVersionTable.PSVersion
-```
+   ```powershell
+   PS> winget --version
+   ```
 
-`Major` 가 `7` 이면 정상입니다. 이후 모든 Windows 명령은 이 PowerShell 7 창에서 실행합니다.
+   버전이 나오면 정상입니다. 명령을 찾을 수 없으면 Microsoft Store에서 **앱 설치 관리자(App Installer)** 를 설치하거나 업데이트합니다.
+
+3. PowerShell 7을 설치합니다.
+
+   ```powershell
+   PS> winget install --id Microsoft.PowerShell --source winget
+   ```
+
+   `No available upgrade found` 가 나오면 이미 최신 버전이 설치된 것이므로 그대로 진행합니다.
+
+4. **PowerShell 7로 전환**한 뒤 버전을 확인합니다.
+
+   ```powershell
+   PS> pwsh
+   PS> $PSVersionTable.PSVersion
+   ```
+
+   `Major` 가 `7` 이면 정상입니다. `pwsh` 로 전환하지 않고 같은 창에서 확인하면 `5.1` 이 나오는 것이 정상이니 꼭 전환합니다. 이후 모든 Windows 명령은 이 PowerShell 7 창에서 실행합니다.
 
 > Windows Terminal을 쓴다면 설정에서 기본 프로필을 **PowerShell**(검은 아이콘, 7.x)로 바꿔 두면 편합니다. 파란 아이콘의 **Windows PowerShell**은 5.1입니다.
+
+### macOS / Linux
+
+기본 터미널을 열고 확인합니다.
+
+```bash
+$ brew --version     # macOS (없어도 진행 가능, 0-3·0-4에서 다른 방법 사용)
+$ curl --version     # Linux
+```
+
+macOS에서 Homebrew를 쓰려면 [brew.sh](https://brew.sh)의 안내를 따릅니다. 없으면 0-3에서 `xcode-select --install`로 Git을 설치하고, 0-4에서 설치 스크립트를 사용합니다.
 
 ---
 
@@ -63,6 +91,8 @@ PS> winget install --id GitHub.cli -e --source winget
 ```bash
 $ brew install git gh
 ```
+
+Homebrew가 없으면 `xcode-select --install`로 Git을 설치하고, `gh`는 [GitHub CLI 설치 안내](https://github.com/cli/cli#installation)를 따릅니다.
 
 **Linux**: 배포판 패키지 관리자로 `git`을 설치하고, `gh`는 [GitHub CLI 설치 안내](https://github.com/cli/cli#installation)를 따릅니다.
 
@@ -95,9 +125,31 @@ copilot --version
 
 ---
 
-## 0-5. 사전 점검 스크립트 실행
+## 0-5. 키트 받기 (clone)
 
-키트 저장소 폴더에서 실행합니다.
+홈 폴더에서 이 키트 저장소를 받고, 받은 폴더로 이동합니다.
+
+```powershell
+# Windows (PowerShell 7)
+PS> Set-Location $HOME
+PS> git clone https://github.com/zer0big/GHCPDevDaysSeoul2026-WorkShopGuide.git
+PS> Set-Location GHCPDevDaysSeoul2026-WorkShopGuide
+```
+
+```bash
+# macOS / Linux
+$ cd ~
+$ git clone https://github.com/zer0big/GHCPDevDaysSeoul2026-WorkShopGuide.git
+$ cd GHCPDevDaysSeoul2026-WorkShopGuide
+```
+
+> 키트 폴더는 **안내서**입니다. 실습은 0-7에서 만드는 별도 폴더(`space-quiz`)에서 진행합니다.
+
+---
+
+## 0-6. 사전 점검 스크립트 실행
+
+0-5에서 받은 키트 폴더에서 실행합니다.
 
 ```powershell
 # Windows
@@ -113,7 +165,7 @@ $ bash ./scripts/check-prereqs.sh
 
 ---
 
-## 0-6. 실습 폴더 만들기
+## 0-7. 실습 폴더 만들기
 
 시스템 폴더에 파일이 생기지 않도록 **홈 폴더 아래**에 실습 폴더를 만듭니다. 스크립트를 쓰거나 직접 만들어도 됩니다.
 
@@ -150,9 +202,9 @@ $ mkdir -p ~/space-quiz && cd ~/space-quiz && pwd
 
 ---
 
-## 0-7. Copilot CLI 실행, 로그인, 폴더 신뢰
+## 0-8. Copilot CLI 실행, 로그인, 폴더 신뢰
 
-실습 폴더에서 실행합니다.
+스크립트가 안내한 이동 명령으로 **실습 폴더로 이동한 뒤** 실행합니다. 키트 폴더에서 실행하지 않습니다.
 
 ```bash
 copilot
@@ -164,7 +216,7 @@ copilot
 
 ---
 
-## 0-8. 모델 선택
+## 0-9. 모델 선택
 
 ```text
 copilot> /model

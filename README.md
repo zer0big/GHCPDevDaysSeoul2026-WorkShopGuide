@@ -10,46 +10,69 @@
 
 ---
 
-## 1. 빠른 시작
+## 1. 시작하기
 
-### 1-1. 키트 받기
+### 처음이라면 (권장)
 
-```bash
-git clone <이 저장소 URL>
-cd copilot-cli-first-steps-kit
-```
+도구 설치부터 차례로 진행합니다. **[레슨 0 - 사전 준비 및 설정](docs/00-prerequisites.md)** 을 처음부터 따라 하세요.
 
-### 1-2. 사전 점검 실행
+| 순서 | 내용 |
+| --- | --- |
+| 0-2 | 터미널 준비 (Windows는 PowerShell 7) |
+| 0-3 | Git, GitHub CLI 설치 |
+| 0-4 | Copilot CLI 설치 |
+| 0-5 | 키트 받기 (clone) |
+| 0-6 | 사전 점검 스크립트 실행 |
+| 0-7 | 실습 폴더 만들기 |
+| 0-8 ~ 0-9 | Copilot CLI 실행, 로그인, 폴더 신뢰, 모델 선택 |
 
-**Windows (PowerShell 7)**
+### Git, PowerShell 7(Windows), Copilot CLI가 이미 있다면
+
+홈 폴더에서 키트를 받고, 점검 후 실습 폴더를 만듭니다. Windows는 **관리자 권한이 아닌 PowerShell 7** 창에서 실행합니다.
+
+**1) 키트 받기**
 
 ```powershell
+# Windows (PowerShell 7)
+Set-Location $HOME
+git clone https://github.com/zer0big/GHCPDevDaysSeoul2026-WorkShopGuide.git
+Set-Location GHCPDevDaysSeoul2026-WorkShopGuide
+```
+
+```bash
+# macOS / Linux
+cd ~
+git clone https://github.com/zer0big/GHCPDevDaysSeoul2026-WorkShopGuide.git
+cd GHCPDevDaysSeoul2026-WorkShopGuide
+```
+
+**2) 사전 점검**
+
+```powershell
+# Windows
 pwsh -ExecutionPolicy Bypass -File .\scripts\check-prereqs.ps1
 ```
 
-**macOS / Linux**
-
 ```bash
+# macOS / Linux
 bash ./scripts/check-prereqs.sh
 ```
 
-`[FAIL]` 항목이 있으면 [레슨 0](docs/00-prerequisites.md)을 보고 설치한 뒤 다시 실행합니다.
+`[FAIL]` 항목이 있으면 [레슨 0](docs/00-prerequisites.md)의 해당 절을 보고 설치한 뒤 다시 실행합니다.
 
-### 1-3. 실습 폴더 만들기
-
-**Windows**
+**3) 실습 폴더 만들기**
 
 ```powershell
+# Windows
 pwsh -ExecutionPolicy Bypass -File .\scripts\new-workspace.ps1
 ```
 
-**macOS / Linux**
-
 ```bash
+# macOS / Linux
 bash ./scripts/new-workspace.sh
 ```
 
-스크립트가 `홈 폴더/space-quiz`를 만들고 경로를 알려 줍니다. 이 폴더로 이동해 `copilot`을 실행하면 준비 완료입니다. 이후는 레슨 문서를 순서대로 따라 합니다.
+스크립트가 `홈 폴더/space-quiz`를 만들고 이동할 명령을 알려 줍니다. 이후 [레슨 0-8](docs/00-prerequisites.md#0-8-copilot-cli-실행-로그인-폴더-신뢰)부터 이어서 진행합니다.
 
 ---
 
