@@ -12,67 +12,9 @@
 
 ## 1. 시작하기
 
-### 처음이라면 (권장)
+**모든 참가자는 [레슨 0 - 사전 준비 및 설정](docs/00-prerequisites.md)부터 순서대로 진행합니다.** 도구 설치, 키트 받기, 사전 점검, 실습 폴더 만들기가 모두 레슨 0에 있습니다.
 
-도구 설치부터 차례로 진행합니다. **[레슨 0 - 사전 준비 및 설정](docs/00-prerequisites.md)** 을 처음부터 따라 하세요.
-
-| 순서 | 내용 |
-| --- | --- |
-| 0-2 | 터미널 준비 (Windows는 PowerShell 7) |
-| 0-3 | Git, GitHub CLI 설치 |
-| 0-4 | Copilot CLI 설치 |
-| 0-5 | 키트 받기 (clone) |
-| 0-6 | 사전 점검 스크립트 실행 |
-| 0-7 | 실습 폴더 만들기 |
-| 0-8 ~ 0-9 | Copilot CLI 실행, 로그인, 폴더 신뢰, 모델 선택 |
-
-### Git, PowerShell 7(Windows), Copilot CLI가 이미 있다면
-
-홈 폴더에서 키트를 받고, 점검 후 실습 폴더를 만듭니다. Windows는 **관리자 권한이 아닌 PowerShell 7** 창에서 실행합니다.
-
-**1) 키트 받기**
-
-```powershell
-# Windows (PowerShell 7)
-Set-Location $HOME
-git clone https://github.com/zer0big/GHCPDevDaysSeoul2026-WorkShopGuide.git
-Set-Location GHCPDevDaysSeoul2026-WorkShopGuide
-```
-
-```bash
-# macOS / Linux
-cd ~
-git clone https://github.com/zer0big/GHCPDevDaysSeoul2026-WorkShopGuide.git
-cd GHCPDevDaysSeoul2026-WorkShopGuide
-```
-
-**2) 사전 점검**
-
-```powershell
-# Windows
-pwsh -ExecutionPolicy Bypass -File .\scripts\check-prereqs.ps1
-```
-
-```bash
-# macOS / Linux
-bash ./scripts/check-prereqs.sh
-```
-
-`[FAIL]` 항목이 있으면 [레슨 0](docs/00-prerequisites.md)의 해당 절을 보고 설치한 뒤 다시 실행합니다.
-
-**3) 실습 폴더 만들기**
-
-```powershell
-# Windows
-pwsh -ExecutionPolicy Bypass -File .\scripts\new-workspace.ps1
-```
-
-```bash
-# macOS / Linux
-bash ./scripts/new-workspace.sh
-```
-
-스크립트가 `홈 폴더/space-quiz`를 만들고 이동할 명령을 알려 줍니다. 이후 [레슨 0-8](docs/00-prerequisites.md#0-8-copilot-cli-실행-로그인-폴더-신뢰)부터 이어서 진행합니다.
+> Git, PowerShell 7(Windows), Copilot CLI가 이미 설치되어 있다면 [0-5. 키트 받기](docs/00-prerequisites.md#0-5-키트-받기-clone)부터 시작해도 됩니다.
 
 ---
 
@@ -102,13 +44,15 @@ bash ./scripts/new-workspace.sh
 
 ## 4. 표기 규칙
 
-| 표기 | 입력하는 곳 |
-| --- | --- |
-| `PS>` 또는 `$` 로 시작하는 블록 | 일반 터미널 (PowerShell 7 / bash) |
-| `copilot>` 로 시작하는 블록 | Copilot CLI 입력창 |
-| `!` 로 시작하는 명령 | Copilot CLI 입력창에서 셸 명령을 바로 실행 (`!git status` 등) |
+모든 코드 블록은 복사 버튼으로 그대로 붙여 넣어 실행할 수 있습니다. 어디에서 실행하는지는 블록 위 문장이나 블록 첫 줄 주석으로 표시합니다.
 
-복사할 때 `PS>`, `$`, `copilot>` 프롬프트 표시는 빼고 입력합니다.
+| 표시 | 입력하는 곳 |
+| --- | --- |
+| `# Windows (PowerShell 7)` | PowerShell 7 터미널 |
+| `# macOS / Linux` | 기본 터미널 (bash, zsh) |
+| 레슨 1~9에서 별도 안내가 없는 명령 | Copilot CLI 입력창 (`copilot` 실행 후) |
+| "터미널에서"라고 안내한 명령 | PowerShell 7 또는 기본 터미널 |
+| `!` 로 시작하는 명령 | Copilot CLI 입력창에서 셸 명령을 바로 실행 (`!git status` 등) |
 
 ## 5. 이 실습에서 지킬 세 가지
 

@@ -6,6 +6,8 @@
 
 > **사전 조건**: `/delegate`를 사용할 수 있는 Copilot 플랜이 필요합니다. 조직 계정은 관리자 정책에 따라 제한될 수 있습니다. 사용할 수 없으면 이 레슨은 읽기로 대신하고 [레슨 10](10-review.md)으로 넘어갑니다.
 
+> 이 레슨의 명령은 별도 안내가 없으면 **Copilot CLI 입력창**에 입력합니다. 터미널에서 실행하는 명령은 "터미널에서"라고 표시합니다.
+
 ---
 
 ## 9-1. 원래 프로젝트 폴더를 최신 `main`으로 맞추기
@@ -14,23 +16,23 @@
 
 ```powershell
 # Windows
-PS> cd "$HOME\space-quiz"
-PS> git status
+cd "$HOME\space-quiz"
+git status
 ```
 
 ```bash
 # macOS / Linux
-$ cd ~/space-quiz
-$ git status
+cd ~/space-quiz
+git status
 ```
 
-레슨 4의 첫 번째 이슈 변경이 미커밋 상태로 남아 있으면 **임시 보관**합니다. 작업은 삭제되지 않습니다.
+같은 터미널에서, 레슨 4의 첫 번째 이슈 변경이 미커밋 상태로 남아 있으면 **임시 보관**합니다. 작업은 삭제되지 않습니다.
 
 ```bash
 git stash push -m "Save local work before delegation"
 ```
 
-`main`으로 이동하고 최신 코드를 받습니다.
+터미널에서 `main`으로 이동하고 최신 코드를 받습니다.
 
 ```bash
 git switch main
@@ -38,7 +40,7 @@ git pull --ff-only
 git status
 ```
 
-**`On branch main` 과 `working tree clean`** 이 보이면 Copilot CLI를 실행합니다.
+**`On branch main` 과 `working tree clean`** 이 보이면 터미널에서 Copilot CLI를 실행합니다.
 
 ```bash
 copilot
@@ -55,7 +57,7 @@ copilot
 ## 9-3. 위임한 작업 확인
 
 ```text
-copilot> !gh pr list
+!gh pr list
 ```
 
 미션 리포트 PR을 찾아 **PR 번호(N)를 기록**합니다. 작업 중에는 **Draft** 또는 **[WIP]** 로 표시됩니다.
@@ -73,7 +75,7 @@ copilot> !gh pr list
 작업 완료 안내가 나오면 PR 페이지를 엽니다.
 
 ```text
-copilot> !gh pr view N --web
+!gh pr view N --web
 ```
 
 - 병합 대상이 `main`인가
@@ -105,13 +107,13 @@ PR 브랜치로 이동한 뒤 퀴즈를 엽니다. **한 줄씩** 실행합니�
 PR이 아직 **Draft** 라면 초안 상태를 해제합니다.
 
 ```text
-copilot> !gh pr ready N
+!gh pr ready N
 ```
 
 병합하고 작업 브랜치를 정리합니다.
 
 ```text
-copilot> !gh pr merge N --squash --delete-branch
+!gh pr merge N --squash --delete-branch
 ```
 
 | 옵션 | 의미 |
@@ -122,8 +124,8 @@ copilot> !gh pr merge N --squash --delete-branch
 최종 상태를 확인합니다.
 
 ```text
-copilot> !gh pr view N --json state
-copilot> !git status --short --branch
+!gh pr view N --json state
+!git status --short --branch
 ```
 
 `{"state":"MERGED"}` 가 나오면 완료입니다.

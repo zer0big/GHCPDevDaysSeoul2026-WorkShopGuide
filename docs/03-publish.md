@@ -10,6 +10,8 @@
 
 > 여기서 **게시**는 코드를 GitHub에 올리는 것입니다. 퀴즈 웹사이트가 배포되는 것은 아닙니다.
 
+> 이 레슨의 명령은 별도 안내가 없으면 **Copilot CLI 입력창**에 입력합니다. 터미널에서 실행하는 명령은 "터미널에서"라고 표시합니다.
+
 ---
 
 ## 3-0. Git 작성자 정보 확인 (최초 1회)
@@ -17,15 +19,15 @@
 커밋 시 이름·이메일 오류가 나지 않도록 먼저 확인합니다. Copilot CLI 입력창에서 실행합니다.
 
 ```text
-copilot> !git config --global user.name
-copilot> !git config --global user.email
+!git config --global user.name
+!git config --global user.email
 ```
 
 값이 비어 있으면 설정합니다. (따옴표 안은 본인 정보로 바꿉니다.)
 
 ```text
-copilot> !git config --global user.name "Your Name"
-copilot> !git config --global user.email "you@example.com"
+!git config --global user.name "Your Name"
+!git config --global user.email "you@example.com"
 ```
 
 ## 3-1. 옵션 A: 에이전트에게 요청하기 (권장)
@@ -56,8 +58,8 @@ GitHub CLI(`gh`) 로그인이 되어 있어야 합니다. Copilot CLI 입력창�
 ## 3-3. 결과 확인
 
 ```text
-copilot> !git log --oneline -1
-copilot> !gh repo view --web
+!git log --oneline -1
+!gh repo view --web
 ```
 
 브라우저에서 저장소에 `index.html`과 `.github/copilot-instructions.md` **두 파일**이 있는지 확인합니다.

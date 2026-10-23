@@ -38,7 +38,7 @@ Copilot CLI는 Windows에서 **PowerShell 6 이상**이 필요합니다. 기본 
 2. winget이 있는지 확인합니다.
 
    ```powershell
-   PS> winget --version
+   winget --version
    ```
 
    버전이 나오면 정상입니다. 명령을 찾을 수 없으면 Microsoft Store에서 **앱 설치 관리자(App Installer)** 를 설치하거나 업데이트합니다.
@@ -46,7 +46,7 @@ Copilot CLI는 Windows에서 **PowerShell 6 이상**이 필요합니다. 기본 
 3. PowerShell 7을 설치합니다.
 
    ```powershell
-   PS> winget install --id Microsoft.PowerShell --source winget
+   winget install --id Microsoft.PowerShell --source winget
    ```
 
    `No available upgrade found` 가 나오면 이미 최신 버전이 설치된 것이므로 그대로 진행합니다.
@@ -54,8 +54,8 @@ Copilot CLI는 Windows에서 **PowerShell 6 이상**이 필요합니다. 기본 
 4. **PowerShell 7로 전환**한 뒤 버전을 확인합니다.
 
    ```powershell
-   PS> pwsh
-   PS> $PSVersionTable.PSVersion
+   pwsh
+   $PSVersionTable.PSVersion
    ```
 
    `Major` 가 `7` 이면 정상입니다. `pwsh` 로 전환하지 않고 같은 창에서 확인하면 `5.1` 이 나오는 것이 정상이니 꼭 전환합니다. 이후 모든 Windows 명령은 이 PowerShell 7 창에서 실행합니다.
@@ -67,8 +67,8 @@ Copilot CLI는 Windows에서 **PowerShell 6 이상**이 필요합니다. 기본 
 기본 터미널을 열고 확인합니다.
 
 ```bash
-$ brew --version     # macOS (없어도 진행 가능, 0-3·0-4에서 다른 방법 사용)
-$ curl --version     # Linux
+brew --version     # macOS (없어도 진행 가능, 0-3·0-4에서 다른 방법 사용)
+curl --version     # Linux
 ```
 
 macOS에서 Homebrew를 쓰려면 [brew.sh](https://brew.sh)의 안내를 따릅니다. 없으면 0-3에서 `xcode-select --install`로 Git을 설치하고, 0-4에서 설치 스크립트를 사용합니다.
@@ -82,14 +82,14 @@ macOS에서 Homebrew를 쓰려면 [brew.sh](https://brew.sh)의 안내를 따릅
 **Windows**
 
 ```powershell
-PS> winget install --id Git.Git -e --source winget
-PS> winget install --id GitHub.cli -e --source winget
+winget install --id Git.Git -e --source winget
+winget install --id GitHub.cli -e --source winget
 ```
 
 **macOS**
 
 ```bash
-$ brew install git gh
+brew install git gh
 ```
 
 Homebrew가 없으면 `xcode-select --install`로 Git을 설치하고, `gh`는 [GitHub CLI 설치 안내](https://github.com/cli/cli#installation)를 따릅니다.
@@ -131,16 +131,16 @@ copilot --version
 
 ```powershell
 # Windows (PowerShell 7)
-PS> Set-Location $HOME
-PS> git clone https://github.com/zer0big/GHCPDevDaysSeoul2026-WorkShopGuide.git
-PS> Set-Location GHCPDevDaysSeoul2026-WorkShopGuide
+Set-Location $HOME
+git clone https://github.com/zer0big/GHCPDevDaysSeoul2026-WorkShopGuide.git
+Set-Location GHCPDevDaysSeoul2026-WorkShopGuide
 ```
 
 ```bash
 # macOS / Linux
-$ cd ~
-$ git clone https://github.com/zer0big/GHCPDevDaysSeoul2026-WorkShopGuide.git
-$ cd GHCPDevDaysSeoul2026-WorkShopGuide
+cd ~
+git clone https://github.com/zer0big/GHCPDevDaysSeoul2026-WorkShopGuide.git
+cd GHCPDevDaysSeoul2026-WorkShopGuide
 ```
 
 > 키트 폴더는 **안내서**입니다. 실습은 0-7에서 만드는 별도 폴더(`space-quiz`)에서 진행합니다.
@@ -153,12 +153,12 @@ $ cd GHCPDevDaysSeoul2026-WorkShopGuide
 
 ```powershell
 # Windows
-PS> pwsh -ExecutionPolicy Bypass -File .\scripts\check-prereqs.ps1
+pwsh -ExecutionPolicy Bypass -File .\scripts\check-prereqs.ps1
 ```
 
 ```bash
 # macOS / Linux
-$ bash ./scripts/check-prereqs.sh
+bash ./scripts/check-prereqs.sh
 ```
 
 모든 필수 항목이 `[ OK ]` 이면 다음 단계로 진행합니다.
@@ -173,27 +173,27 @@ $ bash ./scripts/check-prereqs.sh
 
 ```powershell
 # Windows
-PS> pwsh -ExecutionPolicy Bypass -File .\scripts\new-workspace.ps1
+pwsh -ExecutionPolicy Bypass -File .\scripts\new-workspace.ps1
 ```
 
 ```bash
 # macOS / Linux
-$ bash ./scripts/new-workspace.sh
+bash ./scripts/new-workspace.sh
 ```
 
 **직접 만들기 (Windows)**
 
 ```powershell
-PS> Set-Location $HOME
-PS> New-Item -ItemType Directory -Path space-quiz -Force
-PS> Set-Location space-quiz
-PS> Get-Location
+Set-Location $HOME
+New-Item -ItemType Directory -Path space-quiz -Force
+Set-Location space-quiz
+Get-Location
 ```
 
 **직접 만들기 (macOS / Linux)**
 
 ```bash
-$ mkdir -p ~/space-quiz && cd ~/space-quiz && pwd
+mkdir -p ~/space-quiz && cd ~/space-quiz && pwd
 ```
 
 `Get-Location` 또는 `pwd` 결과가 `...\space-quiz` 또는 `.../space-quiz` 인지 확인합니다. `C:\Windows\System32\...` 가 보이면 잘못된 위치입니다.
@@ -218,8 +218,10 @@ copilot
 
 ## 0-9. 모델 선택
 
+Copilot CLI 입력창에서 실행합니다.
+
 ```text
-copilot> /model
+/model
 ```
 
 목록에서 **강사가 안내한 모델**을 선택하고 Enter를 누릅니다. 안내가 없다면 **Auto**를 선택합니다. 선택할 수 있는 모델은 플랜, 조직 정책, CLI 버전에 따라 다릅니다.

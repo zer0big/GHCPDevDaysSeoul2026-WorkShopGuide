@@ -8,6 +8,8 @@
 - `/resume`으로 CLI 안에서 세션을 전환합니다.
 - (선택) 다른 기기에서 로컬 세션에 접속합니다.
 
+> 이 레슨의 명령은 별도 안내가 없으면 **Copilot CLI 입력창**에 입력합니다. 터미널에서 실행하는 명령은 "터미널에서"라고 표시합니다.
+
 ---
 
 ## 7-1. 종료 후 재개하기
@@ -27,7 +29,7 @@ copilot --resume
 ## 7-2. CLI 안에서 세션 전환
 
 ```text
-copilot> /resume
+/resume
 ```
 
 목록에서 원하는 세션을 선택하고 Enter를 누릅니다. 다음 레슨은 **문항 섞기를 구현한 워크트리 세션**에서 이어갑니다.
@@ -37,9 +39,9 @@ copilot> /resume
 계정에서 원격 기능을 사용할 수 있으면 다음 명령으로 상태를 확인하고 켭니다.
 
 ```text
-copilot> /remote
-copilot> /remote show
-copilot> /remote on
+/remote
+/remote show
+/remote on
 ```
 
 화면 안내에 따라 웹이나 GitHub Mobile에서 접속합니다. **로컬 컴퓨터와 CLI는 계속 실행 중이어야 합니다.**
