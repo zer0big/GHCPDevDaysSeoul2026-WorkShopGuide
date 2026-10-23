@@ -1,0 +1,9 @@
+# 실습 프로젝트는 이 저장소가 아닌 홈 폴더의 space-quiz 에서 진행합니다.
+space-quiz/
+space-quiz-*/
+
+# OS / 편집기
+.DS_Store
+Thumbs.db
+.vscode/
+*.bak
